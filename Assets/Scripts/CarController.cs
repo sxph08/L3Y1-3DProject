@@ -35,6 +35,8 @@ public class CarController : MonoBehaviour
     private float emissionRate;
     private GameObject particleHolder;
 
+    [Header("Audio")]
+    public AudioSource jumpSFX;
 
     void Start()
     {
@@ -53,6 +55,8 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
+
+        audioHandling();
 
         speedInput = 0f;
         if (Input.GetAxis("Vertical") > 0) 
@@ -122,6 +126,14 @@ public class CarController : MonoBehaviour
             }
         }
 
+    }
+
+    void audioHandling()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            jumpSFX.Play();
+        }
     }
 
 }

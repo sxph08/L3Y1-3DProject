@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("R PRESSED");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         timerText.text = timer.ToString("F2");
         timer -= Time.deltaTime;
 
