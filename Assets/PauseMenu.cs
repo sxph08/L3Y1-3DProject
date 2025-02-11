@@ -6,36 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
-    public static bool GameIsPaused = false;
-
+    public CarController PScript;
     public GameObject pauseMenuUI;
+
+    void Start()
+    {
+        pauseMenuUI.SetActive(false);
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(GameIsPaused)
-            {
-                Resume();
-            } else
-            {
-                Pause();
-            }
+            pauseMenuUI.SetActive(true);
+            PScript.enabled = false;
         }
     }
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        PScript.enabled = true;
     }
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        PScript.enabled = false;
     }
 
     public void LoadMenu()

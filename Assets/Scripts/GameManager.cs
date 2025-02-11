@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public float timeLimit;
     public TMP_Text timerText;
 
+    public GameObject boat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("R PRESSED");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameObject.Find("Sphere").GetComponent<PlayerCollider>().OutOfTime();;
         }
 
         timerText.text = timer.ToString("F2");
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
         if(timer <= 0)
         {
             Debug.Log("Out of time.");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameObject.Find("Sphere").GetComponent<PlayerCollider>().OutOfTime();
         }
         else
         {
